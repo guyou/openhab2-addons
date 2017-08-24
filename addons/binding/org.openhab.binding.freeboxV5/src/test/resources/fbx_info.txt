@@ -1,0 +1,144 @@
+______________________________________________________________________
+
+                      Etat de la Freebox                           
+______________________________________________________________________
+
+
+Informations générales :
+========================
+
+  Modèle                         Freebox ADSL            
+  Version du firmware            1.5.21                  
+  Mode de connection             Dégroupé                
+  Temps depuis la mise en route  261 jours, 12 heures, 48 minutes
+
+
+Téléphone :
+===========
+
+  Etat                           Ok                      
+  Etat du combiné                Raccroché               
+  Sonnerie                       Inactive                
+
+
+Adsl :
+======
+
+  Etat                           Showtime                
+  Protocole                      ADSL2+                  
+  Mode                           Interleaved             
+
+                         Descendant         Montant           
+                         --                 --                
+  Débit ATM              15286 kb/s         1093 kb/s         
+  Marge de bruit         6.00 dB            7.40 dB           
+  Atténuation            32.50 dB           19.00 dB          
+  FEC                    836528             782458            
+  CRC                    521506             0                 
+  HEC                    2244               124383            
+
+ Journal de connexion adsl :
+ ---------------------------
+
+  Date                         Etat             Débit (kb/s)    
+  --                           --               --              
+  10/08/2017 à 21:29:44        Connexion        15286 / 997     
+  10/08/2017 à 21:29:21        Déconnexion                      
+  10/08/2017 à 21:09:49        Connexion        15226 / 1025    
+  10/08/2017 à 21:09:26        Déconnexion                      
+  10/08/2017 à 20:40:52        Connexion        15235 / 973     
+  10/08/2017 à 20:40:28        Déconnexion                      
+  10/08/2017 à 20:36:13        Connexion        15243 / 969     
+  10/08/2017 à 20:35:49        Déconnexion                      
+  10/08/2017 à 09:56:13        Connexion        15247 / 1020    
+  10/08/2017 à 09:55:50        Déconnexion                      
+  10/08/2017 à 09:43:38        Connexion        15226 / 1025    
+  10/08/2017 à 09:43:14        Déconnexion                      
+  10/08/2017 à 07:26:38        Connexion        15262 / 1004    
+  10/08/2017 à 07:26:14        Déconnexion                      
+  10/08/2017 à 06:51:12        Connexion        15226 / 1025    
+  10/08/2017 à 06:50:49        Déconnexion                      
+  10/08/2017 à 06:08:08        Connexion        15226 / 1025    
+  10/08/2017 à 06:07:45        Déconnexion                      
+  10/08/2017 à 05:59:08        Connexion        15250 / 1004    
+  10/08/2017 à 05:58:45        Déconnexion                      
+  10/08/2017 à 04:49:39        Connexion        15310 / 1013    
+  10/08/2017 à 04:49:16        Déconnexion                      
+  10/08/2017 à 03:25:09        Connexion        15226 / 1025    
+  10/08/2017 à 03:24:41        Déconnexion                      
+
+
+Wifi :
+======
+
+  Etat                           Ok                      
+  Modèle                         Ralink RT2880           
+  Canal                          9                       
+  État du réseau                 Activé                  
+  Ssid                           BSSID                
+  Type de clé                    WPA                     
+  FreeWifi                       Actif                   
+  FreeWifi Secure                Actif                   
+
+
+Réseau :
+========
+
+  Adresse MAC Freebox            00:11:22:33:44:55:66
+  Adresse IP                     1.2.3.4
+  IPv6                           Désactivé               
+  Mode routeur                   Activé                  
+  Adresse IP privée              192.168.0.254           
+  Adresse IP DMZ                 192.168.0.0             
+  Adresse IP Freeplayer          192.168.0.3             
+  Réponse au ping                Désactivé               
+  Proxy Wake On Lan              Désactivé               
+  Serveur DHCP                   Activé                  
+  Plage d'adresses dynamique     192.168.0.1 - 192.168.0.25
+
+ Attributions dhcp :
+ -------------------
+
+  Adresse MAC            Adresse IP                  
+  --                     --                          
+  58:94:6B:02:07:74      192.168.0.7                 
+  8C:84:01:30:02:AA      192.168.0.8                 
+  D0:AE:EC:BD:34:A2      192.168.0.10                
+  B8:27:EB:1A:54:9F      192.168.0.11                
+  4C:74:03:65:43:40      192.168.0.12                
+  00:19:DB:9C:12:ED      192.168.0.20                
+  CC:89:FD:1E:DE:60      192.168.0.23                
+  BC:EE:7B:78:76:12      192.168.0.1                 
+  00:15:AF:78:93:AC      192.168.0.2                 
+  00:15:AF:E7:FA:89      192.168.0.4                 
+  00:40:63:DD:E0:EB      192.168.0.5                 
+  00:26:9E:D4:AC:02      192.168.0.3                 
+  00:22:02:00:35:7F      192.168.0.6                 
+
+ Redirections de ports :
+ -----------------------
+
+  Protocole              Port source    Destination    Port destination
+  --                     --             --             --            
+  UDP                    5222           192.168.0.1    5222          
+  TCP                    5500           192.168.0.1    5500          
+  TCP                    443            192.168.0.3    443           
+
+ Redirections de plage de ports :
+ --------------------------------
+
+  Protocole              Destination        Plage de redirection
+  --                     --                 --                
+  TCP                    192.168.0.6        6881 - 6889       
+  UDP                    192.168.0.6        6881 - 6889       
+
+ Interfaces réseau :
+ -------------------
+
+                         Lien           Débit entrant  Débit sortant 
+                         --             --             --            
+  WAN                    Ok             0 ko/s         0 ko/s        
+  Ethernet               100baseTX-FD   0 ko/s         0 ko/s        
+  USB                    Non connecté                                
+  Switch                 100baseTX-FD   0 ko/s         0 ko/s        
+
