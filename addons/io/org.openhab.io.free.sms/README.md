@@ -4,7 +4,8 @@ This IO allows to send [SMS](https://fr.wikipedia.org/wiki/Short_Message_Service
 
 # References
 
-http://www.universfreebox.com/article/26337/Nouveau-Free-Mobile-lance-un-systeme-de-notification-SMS-pour-vos-appareils-connectes
+* http://www.universfreebox.com/article/26337/Nouveau-Free-Mobile-lance-un-systeme-de-notification-SMS-pour-vos-appareils-connectes
+* https://community.openhab.org/t/sms-mms-messages-from-a-rule/20680
 
 # Other projects
 
