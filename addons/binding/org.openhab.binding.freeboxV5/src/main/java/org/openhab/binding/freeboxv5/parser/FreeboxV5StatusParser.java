@@ -9,6 +9,8 @@ import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
 
 public class FreeboxV5StatusParser {
 
+    private final DurationParser durationParser = new DurationParser();
+
     public enum Context {
         SYSTEM("Informations générales"),
         PHONE("Téléphone"),
@@ -48,6 +50,9 @@ public class FreeboxV5StatusParser {
                     String fwversion = line.substring("Version du firmware".length() + 2);
                     fwversion = fwversion.trim();
                     result.fwversion = fwversion;
+                }
+                if (line.contains("Temps depuis la mise en route")) {
+                    result.uptime = durationParser.match(line);
                 }
             } else {
                 // A title

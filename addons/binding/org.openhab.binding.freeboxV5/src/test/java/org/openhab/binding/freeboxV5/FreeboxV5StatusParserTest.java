@@ -17,7 +17,10 @@ public class FreeboxV5StatusParserTest {
         FreeboxV5Status status = parser.parse(is);
 
         Assert.assertNotNull(status);
+        System.out.println(status);
 
         Assert.assertEquals("1.5.21", status.fwversion);
+
+        Assert.assertEquals(261 * 24 * 60 + 12 * 60 + 48, status.uptime);
     }
 }
