@@ -38,6 +38,7 @@ public class FreeboxV5StatusParser {
     public FreeboxV5Status parse(InputStream input) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         String line;
+        Context context = null;
         FreeboxV5Status result = new FreeboxV5Status();
         while ((line = reader.readLine()) != null) {
             if (line.trim().isEmpty()) {
@@ -56,6 +57,11 @@ public class FreeboxV5StatusParser {
                 }
             } else {
                 // A title
+                Context next = Context.match(line);
+                if (null != next) {
+                    // New context
+                    context = next;
+                }
             }
         }
         reader.close();
