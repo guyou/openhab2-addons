@@ -55,6 +55,12 @@ public class FreeboxV5StatusParser {
                 if (line.contains("Temps depuis la mise en route")) {
                     result.uptime = durationParser.match(line);
                 }
+                if (Context.PHONE.equals(context) && line.contains("Etat  ")) {
+                    result.phone.on = line.contains("Ok");
+                }
+                if (Context.PHONE.equals(context) && line.contains("Sonnerie")) {
+                    result.phone.ringing = !line.contains("Inactive");
+                }
             } else {
                 // A title
                 Context next = Context.match(line);

@@ -22,5 +22,8 @@ public class FreeboxV5StatusParserTest {
         Assert.assertEquals("1.5.21", status.fwversion);
 
         Assert.assertEquals(261 * 24 * 60 + 12 * 60 + 48, status.uptime);
+
+        Assert.assertTrue(status.phone.on);
+        Assert.assertFalse(status.phone.ringing);
     }
 }

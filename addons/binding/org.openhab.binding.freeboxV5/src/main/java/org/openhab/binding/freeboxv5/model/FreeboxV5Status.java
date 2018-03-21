@@ -5,7 +5,7 @@ public class FreeboxV5Status {
     public String fwversion;
     public long uptime;
 
-    public PhoneStatus phone;
+    public final PhoneStatus phone = new PhoneStatus();
 
     @Override
     public String toString() {
