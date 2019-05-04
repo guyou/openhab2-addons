@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FreeboxV5
+Bundle-SymbolicName: org.openhab.binding.freeboxV5
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.junit,
+ org.eclipse.smarthome.core.thing,
+ org.slf4j.api,
+ org.eclipse.smarthome.core
+Import-Package: org.eclipse.smarthome.io.net.http
