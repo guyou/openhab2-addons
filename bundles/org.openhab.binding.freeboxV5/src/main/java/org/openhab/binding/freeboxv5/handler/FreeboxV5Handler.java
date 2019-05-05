@@ -14,10 +14,13 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.smarthome.core.thing.Bridge;
+import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
+import org.eclipse.smarthome.core.types.Command;
+import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.io.net.http.HttpUtil;
 import org.openhab.binding.freeboxv5.config.FreeboxV5ServerConfiguration;
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
@@ -25,7 +28,11 @@ import org.openhab.binding.freeboxv5.parser.FreeboxV5StatusParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import org.apache.commons.lang.StringUtils;
 
 /**
  * The {@link FreeboxV5Handler} is responsible for handling commands, which are
@@ -33,6 +40,7 @@ import com.sun.xml.internal.ws.util.StringUtils;
  *
  * @author Gaël L'hopital - Initial contribution
  * @author Laurent Garnier - updated to a bridge handler and delegate few things to another handler
+ * @author Guilhem Bonnefille - adaptation to FreeboxV5
  */
 public class FreeboxV5Handler extends BaseBridgeHandler {
 
@@ -82,17 +90,22 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
             }
 
             FreeboxV5StatusParser parser = new FreeboxV5StatusParser();
-            FreeboxV5Status status = parser.parse(result);
+	        InputStream resultIS = new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8));
+            try {
+                FreeboxV5Status status = parser.parse(resultIS);
 
-            Map<String, String> properties = editProperties();
-            boolean update = false;
-            if (StringUtils.isNotEmpty(status.fwversion)
-                    && !status.fwversion.equals(properties.get(Thing.PROPERTY_FIRMWARE_VERSION))) {
-                update = true;
-                properties.put(Thing.PROPERTY_FIRMWARE_VERSION, status.fwversion);
-            }
-            if (update) {
-                updateProperties(properties);
+                Map<String, String> properties = editProperties();
+                boolean update = false;
+                if (StringUtils.isNotEmpty(status.fwversion)
+                        && !status.fwversion.equals(properties.get(Thing.PROPERTY_FIRMWARE_VERSION))) {
+                    update = true;
+                    properties.put(Thing.PROPERTY_FIRMWARE_VERSION, status.fwversion);
+                }
+                if (update) {
+                    updateProperties(properties);
+                }
+            } catch(IOException e) {
+                // FIXME
             }
         }
     };
@@ -107,4 +120,20 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         super.dispose();
     }
 
+    @Override
+    public void handleCommand(ChannelUID channelUID, Command command) {
+        if (command instanceof RefreshType) {
+            return;
+        }
+        if (getThing().getStatus() == ThingStatus.UNKNOWN || (getThing().getStatus() == ThingStatus.OFFLINE
+                && getThing().getStatusInfo().getStatusDetail() == ThingStatusDetail.CONFIGURATION_ERROR)) {
+            return;
+        }
+        switch (channelUID.getId()) {
+            default:
+                logger.debug("Thing {}: unexpected command {} from channel {}", getThing().getUID(), command,
+                        channelUID.getId());
+                break;
+        }
+    }
 }
