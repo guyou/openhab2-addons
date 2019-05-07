@@ -102,6 +102,9 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
 
     private void updateServerState(FreeboxV5Status status) {
         Map<String, String> properties = editProperties();
+        if (StringUtils.isNotEmpty(status.model)) {
+            properties.put(Thing.PROPERTY_MODEL_ID, status.model);
+        }
         if (StringUtils.isNotEmpty(status.fwversion)) {
             properties.put(Thing.PROPERTY_FIRMWARE_VERSION, status.fwversion);
         }

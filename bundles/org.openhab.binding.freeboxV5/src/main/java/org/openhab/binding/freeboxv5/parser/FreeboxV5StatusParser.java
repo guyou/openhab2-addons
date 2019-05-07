@@ -51,13 +51,19 @@ public class FreeboxV5StatusParser {
             }
             if (line.startsWith(" ")) {
                 logger.debug("Processing " + line);
+
                 // Not a title
-                if (line.contains("Version du firmware")) {
+                if (Context.SYSTEM.equals(context) && line.contains("Modèle")) {
+                    String model = line.substring("Modèle".length() + 2);
+                    model = model.trim();
+                    result.model = model;
+                }
+                if (Context.SYSTEM.equals(context) && line.contains("Version du firmware")) {
                     String fwversion = line.substring("Version du firmware".length() + 2);
                     fwversion = fwversion.trim();
                     result.fwversion = fwversion;
                 }
-                if (line.contains("Temps depuis la mise en route")) {
+                if (Context.SYSTEM.equals(context) && line.contains("Temps depuis la mise en route")) {
                     result.uptime = durationParser.match(line);
                 }
                 if (Context.PHONE.equals(context) && line.contains("Etat  ")) {
