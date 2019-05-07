@@ -6,8 +6,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FreeboxV5StatusParser {
+
+    private final Logger logger = LoggerFactory.getLogger(FreeboxV5StatusParser.class);
 
     private final DurationParser durationParser = new DurationParser();
 
@@ -46,6 +50,7 @@ public class FreeboxV5StatusParser {
                 continue;
             }
             if (line.startsWith(" ")) {
+                logger.debug("Processing " + line);
                 // Not a title
                 if (line.contains("Version du firmware")) {
                     String fwversion = line.substring("Version du firmware".length() + 2);
@@ -65,6 +70,7 @@ public class FreeboxV5StatusParser {
                 // A title
                 Context next = Context.match(line);
                 if (null != next) {
+                    logger.debug("Switching context from {} to {}", context, next);
                     // New context
                     context = next;
                 }
