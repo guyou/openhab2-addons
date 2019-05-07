@@ -107,6 +107,14 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         }
         updateProperties(properties);
 
+        updateChannelDecimalState(FreeboxV5BindingConstants.UPTIME, status.uptime);
+    }
+    private void updateChannelDecimalState(String channel, int state) {
+        updateState(new ChannelUID(getThing().getUID(), channel), new DecimalType(state));
+    }
+
+    private void updateChannelDecimalState(String channel, long state) {
+        updateState(new ChannelUID(getThing().getUID(), channel), new DecimalType(state));
     }
 
     @Override
