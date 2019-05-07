@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<binding:binding id="freebox"
+<binding:binding id="freeboxV5"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:binding="http://eclipse.org/smarthome/schemas/binding/v1.0.0"
         xsi:schemaLocation="http://eclipse.org/smarthome/schemas/binding/v1.0.0 http://eclipse.org/smarthome/schemas/binding-1.0.0.xsd">
 
-    <name>Freebox Binding</name>
+    <name>Freebox V5 Binding</name>
     <description>The Freebox binding requests your Freebox V5 for various operational informations.</description>
     <author>Guilhem Bonnefille</author>
 
