@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class DurationParser {
 
-    Pattern pattern = Pattern.compile("(\\d+) jours, (\\d+) heures, (\\d+) minutes");
+    final Pattern pattern = Pattern.compile("(\\d+) jours, (\\d+) heures, (\\d+) minutes");
 
     public long match(final String line) {
         long duration = 0;
