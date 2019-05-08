@@ -25,6 +25,12 @@
 		<channel-groups>
             <channel-group id="general" typeId="general" />
             <channel-group id="adsl" typeId="adsl" />
+            <channel-group id="adsl_atm" typeId="adsl_atm" />
+            <channel-group id="adsl_attenuation" typeId="adsl_attenuation" />
+            <channel-group id="adsl_noise_margin" typeId="adsl_noise_margin" />
+            <channel-group id="adsl_fec" typeId="adsl_fec" />
+            <channel-group id="adsl_crc" typeId="adsl_crc" />
+            <channel-group id="adsl_hec" typeId="adsl_hec" />
 		</channel-groups>
 
 		<properties>
@@ -202,13 +208,101 @@
 		<state readOnly="true" pattern="%d rpm" />
 	</channel-type>
 
-	<channel-type id="lcd_brightness" advanced="true">
+    <channel-group-type id="adsl_atm" advanced="true">
+        <label>ADSL ATM</label>
+        <description>ADSL ATM levels</description>
+        <channels>
+            <channel id="adsl_atm_up" typeId="rate_up" />
+            <channel id="adsl_atm_down" typeId="rate_down" />
+        </channels>
+    </channel-group-type>
+
+    <channel-type id="rate_down" advanced="true">
+        <item-type>Number</item-type>
+        <label>Rate Down</label>
+        <description>Downloading rate</description>
+        <state readOnly="true" pattern="%d kb/s" />
+    </channel-type>
+
+    <channel-type id="rate_up" advanced="true">
+        <item-type>Number</item-type>
+        <label>Rate Up</label>
+        <description>Uploading rate</description>
+        <state readOnly="true" pattern="%d kb/s" />
+    </channel-type>
+
+    <channel-group-type id="adsl_noise_margin" advanced="true">
+        <label>ADSL Noise</label>
+        <description>ADSL noise margins</description>
+        <channels>
+            <channel id="adsl_noise_margin_up" typeId="db_up" />
+            <channel id="adsl_atm_down" typeId="db_down" />
+        </channels>
+    </channel-group-type>
+
+	<channel-type id="db_down" advanced="true">
 		<item-type>Number</item-type>
-		<label>Screen Brightness</label>
-		<description>Brightness level of the screen in percent</description>
-		<category>DimmableLight</category>
-		<state pattern="%d %%" />
+		<label>Db Down</label>
+		<description>Downloading</description>
+		<state readOnly="true" pattern="%d db" />
 	</channel-type>
+
+    <channel-type id="db_up" advanced="true">
+        <item-type>Number</item-type>
+        <label>Db Up</label>
+        <description>Uploading</description>
+        <state readOnly="true" pattern="%d db" />
+    </channel-type>
+
+    <channel-group-type id="adsl_attenuation" advanced="true">
+        <label>ADSL Attenuation</label>
+        <description>ADSL attenuation</description>
+        <channels>
+            <channel id="adsl_noise_margin_up" typeId="db_up" />
+            <channel id="adsl_atm_down" typeId="db_down" />
+        </channels>
+    </channel-group-type>
+
+    <channel-group-type id="adsl_fec" advanced="true">
+        <label>ADSL FEC</label>
+        <description>ADSL FEC levels</description>
+        <channels>
+            <channel id="adsl_fec_up" typeId="raw_up" />
+            <channel id="adsl_fec_down" typeId="raw_down" />
+        </channels>
+    </channel-group-type>
+
+    <channel-group-type id="adsl_crc" advanced="true">
+        <label>ADSL CRC</label>
+        <description>ADSL CRC levels</description>
+        <channels>
+            <channel id="adsl_crc_up" typeId="raw_up" />
+            <channel id="adsl_crc_down" typeId="raw_down" />
+        </channels>
+    </channel-group-type>
+
+    <channel-group-type id="adsl_hec" advanced="true">
+        <label>ADSL HEC</label>
+        <description>ADSL HEC levels</description>
+        <channels>
+            <channel id="adsl_hec_up" typeId="raw_up" />
+            <channel id="adsl_hec_down" typeId="raw_down" />
+        </channels>
+    </channel-group-type>
+
+    <channel-type id="raw_down" advanced="true">
+        <item-type>Number</item-type>
+        <label>Down</label>
+        <description>Downloading</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="raw_up" advanced="true">
+        <item-type>Number</item-type>
+        <label>Up</label>
+        <description>Uploading</description>
+        <state readOnly="true" />
+    </channel-type>
 
 	<channel-type id="lcd_orientation">
 		<item-type>Number</item-type>

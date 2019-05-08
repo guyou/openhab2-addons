@@ -32,6 +32,7 @@ import org.eclipse.smarthome.io.net.http.HttpUtil;
 import org.openhab.binding.freeboxv5.FreeboxV5BindingConstants;
 import org.openhab.binding.freeboxv5.config.FreeboxV5ServerConfiguration;
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
+import org.openhab.binding.freeboxv5.model.UpDownValue;
 import org.openhab.binding.freeboxv5.parser.FreeboxV5StatusParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -120,6 +121,13 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         updateChannelStringState("adsl", FreeboxV5BindingConstants.ADSL_STATE, status.adsl_state);
         updateChannelStringState("adsl", FreeboxV5BindingConstants.ADSL_MODE, status.adsl_mode);
         updateChannelStringState("adsl", FreeboxV5BindingConstants.ADSL_PROTO, status.adsl_protocol);
+
+        updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_ATM, status.adsl_atm);
+        updateChannelDoubleState(FreeboxV5BindingConstants.ADSL_NOISE, status.adsl_noise_margin);
+        updateChannelDoubleState(FreeboxV5BindingConstants.ADSL_ATTEN, status.adsl_attenuation);
+        updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_FEC, status.adsl_fec);
+        updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_CRC, status.adsl_crc);
+        updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_HEC, status.adsl_hec);
     }
 
     private void updateChannelStringState(String group, String channel, String state) {
@@ -136,6 +144,16 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
 
     private void updateChannelDecimalState(String group, String channel, long state) {
         updateState(new ChannelUID(getThing().getUID(), group, channel), new DecimalType(state));
+    }
+
+    private void updateChannelDoubleState(String channel, UpDownValue<Double> state) {
+        updateState(new ChannelUID(getThing().getUID(), channel, channel + "_up"), new DecimalType(state.up));
+        updateState(new ChannelUID(getThing().getUID(), channel, channel + "_down"), new DecimalType(state.down));
+    }
+
+    private void updateChannelIntegerState(String channel, UpDownValue<Integer> state) {
+        updateState(new ChannelUID(getThing().getUID(), channel, channel + "_up"), new DecimalType(state.up));
+        updateState(new ChannelUID(getThing().getUID(), channel, channel + "_down"), new DecimalType(state.down));
     }
 
     @Override

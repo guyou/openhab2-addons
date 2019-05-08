@@ -60,10 +60,12 @@ public class FreeboxV5BindingConstants {
     public static final String ADSL_STATE = "adsl_state";
     public static final String ADSL_MODE = "adsl_mode";
     public static final String ADSL_PROTO = "adsl_protocol";
-    public static final String FANSPEED = "fanspeed";
-    public static final String LCDBRIGHTNESS = "lcd_brightness";
-    public static final String LCDORIENTATION = "lcd_orientation";
-    public static final String LCDFORCED = "lcd_forced";
+    public static final String ADSL_ATM = "adsl_atm";
+    public static final String ADSL_ATTEN = "adsl_attenuation";
+    public static final String ADSL_NOISE = "adsl_noise_margin";
+    public static final String ADSL_FEC = "adsl_fec";
+    public static final String ADSL_CRC = "adsl_crc";
+    public static final String ADSL_HEC = "adsl_hec";
     public static final String WIFISTATUS = "wifi_status";
     public static final String XDSLSTATUS = "xdsl_status";
     public static final String LINESTATUS = "line_status";
