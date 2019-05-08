@@ -69,6 +69,9 @@ public class FreeboxV5StatusParser {
                 if (Context.PHONE.equals(context) && line.contains("Etat  ")) {
                     result.phone.on = line.contains("Ok");
                 }
+                if (Context.PHONE.equals(context) && line.contains("Etat du combiné")) {
+                    result.phone.hang_up = line.contains("Raccroché");
+                }
                 if (Context.PHONE.equals(context) && line.contains("Sonnerie")) {
                     result.phone.ringing = !line.contains("Inactive");
                 }

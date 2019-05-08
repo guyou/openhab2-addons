@@ -24,6 +24,7 @@ public class FreeboxV5StatusParserTest {
         Assert.assertEquals(261 * 24 * 60 + 12 * 60 + 48, status.uptime);
 
         Assert.assertTrue(status.phone.on);
+        Assert.assertTrue(status.phone.hang_up);
         Assert.assertFalse(status.phone.ringing);
     }
 }
