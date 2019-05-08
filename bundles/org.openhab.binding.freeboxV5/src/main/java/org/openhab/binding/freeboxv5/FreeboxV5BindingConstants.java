@@ -57,9 +57,9 @@ public class FreeboxV5BindingConstants {
     public static final String FWVERSION = "fwversion";
     public static final String UPTIME = "uptime";
     public static final String RESTARTED = "restarted";
-    public static final String TEMPCPUM = "tempcpum";
-    public static final String TEMPCPUB = "tempcpub";
-    public static final String TEMPSWITCH = "tempswitch";
+    public static final String ADSL_STATE = "adsl_state";
+    public static final String ADSL_MODE = "adsl_mode";
+    public static final String ADSL_PROTO = "adsl_protocol";
     public static final String FANSPEED = "fanspeed";
     public static final String LCDBRIGHTNESS = "lcd_brightness";
     public static final String LCDORIENTATION = "lcd_orientation";

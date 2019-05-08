@@ -11,9 +11,9 @@
 			<channel id="fwversion" typeId="fwversion" />
 			<channel id="uptime" typeId="uptime" />
 			<channel id="restarted" typeId="restarted" />
-			<channel id="tempcpum" typeId="tempcpum" />
-			<channel id="tempcpub" typeId="tempcpub" />
-			<channel id="tempswitch" typeId="tempswitch" />
+			<channel id="adsl_state" typeId="adsl_state" />
+			<channel id="adsl_protocol" typeId="adsl_protocol" />
+			<channel id="adsl_mode" typeId="adsl_mode" />
 			<channel id="fanspeed" typeId="fanspeed" />
 			<channel id="reboot" typeId="reboot" />
 			<channel id="lcd_brightness" typeId="lcd_brightness" />
@@ -270,34 +270,24 @@
 		<category>Switch</category>
 	</channel-type>
 
-	<channel-type id="tempcpum" advanced="true">
-		<item-type>Number</item-type>
-		<label>CPUm Temperature</label>
-		<description>Actual measured CPU Marvell temperature of the Freebox Server</description>
-		<category>Temperature</category>
-		<state readOnly="true" pattern="%d °C" />
+	<channel-type id="adsl_state" advanced="true">
+		<item-type>String</item-type>
+		<label>ADSL state</label>
+		<description>State of the ADSL line</description>
+        <state readOnly="true" />
 	</channel-type>
 
-	<channel-type id="tempcpub" advanced="true">
-		<item-type>Number</item-type>
-		<label>CPUb Temperature</label>
-		<description>Actual measured CPU Broadcom (xDSL) temperature of the Freebox Server</description>
-		<category>Temperature</category>
-		<state readOnly="true" pattern="%d °C" />
+	<channel-type id="adsl_mode" advanced="true">
+		<item-type>String</item-type>
+		<label>ADSL Mode</label>
+		<description>Mode of the ADSL line</description>
+		<state readOnly="true" />
 	</channel-type>
 
-	<channel-type id="tempswitch" advanced="true">
-		<item-type>Number</item-type>
-		<label>Switch Temperature</label>
-		<description>Actual measured switch temperature of the Freebox Server</description>
-		<category>Temperature</category>
-		<state readOnly="true" pattern="%d °C" />
-	</channel-type>
-
-	<channel-type id="fanspeed" advanced="true">
-		<item-type>Number</item-type>
-		<label>Fan Speed</label>
-		<description>Actual measured fan speed (rpm) of the Freebox Server</description>
+	<channel-type id="adsl_protocol" advanced="true">
+		<item-type>String</item-type>
+		<label>ADSL protocol</label>
+		<description>Protocol of the ADSL line</description>
 		<state readOnly="true" pattern="%d rpm" />
 	</channel-type>
 

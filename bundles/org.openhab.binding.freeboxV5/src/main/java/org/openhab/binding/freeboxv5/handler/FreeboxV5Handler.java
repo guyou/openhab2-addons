@@ -115,7 +115,17 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         updateChannelDecimalState(FreeboxV5BindingConstants.UPTIME, status.uptime);
         updateChannelSwitchState(FreeboxV5BindingConstants.RESTARTED, status.uptime < previousUptime);
         previousUptime = status.uptime;
+
+        // ADSL
+        updateChannelStringState(FreeboxV5BindingConstants.ADSL_STATE, status.adsl_state);
+        updateChannelStringState(FreeboxV5BindingConstants.ADSL_MODE, status.adsl_mode);
+        updateChannelStringState(FreeboxV5BindingConstants.ADSL_PROTO, status.adsl_protocol);
     }
+
+    private void updateChannelStringState(String channel, String state) {
+        updateState(new ChannelUID(getThing().getUID(), channel), new StringType(state));
+    }
+
     private void updateChannelSwitchState(String channel, boolean state) {
         updateState(new ChannelUID(getThing().getUID(), channel), state ? OnOffType.ON : OnOffType.OFF);
     }
