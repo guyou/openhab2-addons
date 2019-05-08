@@ -52,6 +52,8 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
 
     private ScheduledFuture<?> globalJob;
 
+    private long previousUptime;
+
     public FreeboxV5Handler(Bridge bridge) {
         super(bridge);
 
@@ -111,7 +113,13 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         updateProperties(properties);
 
         updateChannelDecimalState(FreeboxV5BindingConstants.UPTIME, status.uptime);
+        updateChannelSwitchState(FreeboxV5BindingConstants.RESTARTED, status.uptime < previousUptime);
+        previousUptime = status.uptime;
     }
+    private void updateChannelSwitchState(String channel, boolean state) {
+        updateState(new ChannelUID(getThing().getUID(), channel), state ? OnOffType.ON : OnOffType.OFF);
+    }
+
     private void updateChannelDecimalState(String channel, int state) {
         updateState(new ChannelUID(getThing().getUID(), channel), new DecimalType(state));
     }
