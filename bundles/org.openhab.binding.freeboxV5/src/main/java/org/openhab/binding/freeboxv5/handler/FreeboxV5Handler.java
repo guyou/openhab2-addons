@@ -128,6 +128,17 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_FEC, status.adsl_fec);
         updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_CRC, status.adsl_crc);
         updateChannelIntegerState(FreeboxV5BindingConstants.ADSL_HEC, status.adsl_hec);
+
+        // Wifi
+        updateChannelSwitchState("wifi", FreeboxV5BindingConstants.WIFI_STATUS, status.wifi_state);
+        updateChannelStringState("wifi", FreeboxV5BindingConstants.WIFI_MODEL, status.wifi_model);
+        updateChannelDecimalState("wifi", FreeboxV5BindingConstants.WIFI_CHANNEL, status.wifi_channel);
+        updateChannelSwitchState("wifi", FreeboxV5BindingConstants.WIFI_NET_STATE, status.wifi_net_state);
+        updateChannelStringState("wifi", FreeboxV5BindingConstants.WIFI_SSID, status.wifi_ssid);
+        updateChannelStringState("wifi", FreeboxV5BindingConstants.WIFI_TYPE, status.wifi_type);
+        updateChannelSwitchState("wifi", FreeboxV5BindingConstants.WIFI_FREEWIFI_SEC, status.wifi_freewifi_secure);
+        updateChannelSwitchState("wifi", FreeboxV5BindingConstants.WIFI_FREEWIFI, status.wifi_freewifi);
+
     }
 
     private void updateChannelStringState(String group, String channel, String state) {

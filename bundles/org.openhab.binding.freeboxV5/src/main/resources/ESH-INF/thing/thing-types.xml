@@ -8,7 +8,6 @@
 		<description>Provides various informations regarding the status of the Freebox Server</description>
 <!-- 
 		<channels>
-			<channel id="wifi_status" typeId="wifi_status" />
 			<channel id="ftp_status" typeId="ftp_status" />
 			<channel id="upnpav_status" typeId="upnpav_status" />
 			<channel id="sambafileshare_status" typeId="sambafileshare_status" />
@@ -31,6 +30,7 @@
             <channel-group id="adsl_fec" typeId="adsl_fec" />
             <channel-group id="adsl_crc" typeId="adsl_crc" />
             <channel-group id="adsl_hec" typeId="adsl_hec" />
+            <channel-group id="wifi" typeId="wifi" />
 		</channel-groups>
 
 		<properties>
@@ -304,68 +304,76 @@
         <state readOnly="true" />
     </channel-type>
 
-	<channel-type id="lcd_orientation">
+    <channel-group-type id="wifi" advanced="true">
+        <label>Wifi</label>
+        <description>Wifi related parameters</description>
+        <channels>
+            <channel id="wifi_status" typeId="wifi_status" />
+            <channel id="wifi_model" typeId="wifi_model" />
+            <channel id="wifi_channel" typeId="wifi_channel" />
+            <channel id="wifi_net_state" typeId="wifi_net_state" />
+            <channel id="wifi_ssid" typeId="wifi_ssid" />
+            <channel id="wifi_type" typeId="wifi_type" />
+            <channel id="wifi_freewifi" typeId="wifi_freewifi" />
+            <channel id="wifi_freewifi_secure" typeId="wifi_freewifi_secure" />
+        </channels>
+    </channel-group-type>
+
+    <channel-type id="wifi_status" advanced="true">
+        <item-type>Switch</item-type>
+        <label>State</label>
+        <description>Indicates whether the wifi network is enabled</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="wifi_model" advanced="true">
+        <item-type>String</item-type>
+        <label>Model</label>
+        <description>Indicates the model of the Wifi chipset</description>
+        <state readOnly="true" />
+    </channel-type>
+
+	<channel-type id="wifi_channel" advanced="true">
 		<item-type>Number</item-type>
-		<label>Screen Orientation</label>
-		<description>Screen Orientation in degrees</description>
-		<state pattern="%d °">
-			<options>
-				<option value="0">Horizontal</option>
-				<option value="90">Turned left</option>
-				<option value="180">Turned right</option>
-				<option value="270">Reversed</option>
-			</options>
-		</state>
-	</channel-type>
-
-	<channel-type id="lcd_forced" advanced="true">
-		<item-type>Switch</item-type>
-		<label>Forced Orientation</label>
-		<description>Indicates whether the screen orientation forced</description>
-		<category>Switch</category>
-	</channel-type>
-
-	<channel-type id="wifi_status">
-		<item-type>Switch</item-type>
-		<label>Wifi Enabled</label>
-		<description>Indicates whether the wifi network is enabled</description>
-		<category>Switch</category>
-	</channel-type>
-
-	<channel-type id="ftp_status" advanced="true">
-		<item-type>Switch</item-type>
-		<label>FTP Server Enabled</label>
-		<description>Indicates whether the FTP server is enabled</description>
-		<category>Switch</category>
-	</channel-type>
-
-	<channel-type id="upnpav_status" advanced="true">
-		<item-type>Switch</item-type>
-		<label>UPnP AV Enabled</label>
-		<description>Indicates whether UPnP AV is enabled</description>
-		<category>Switch</category>
-	</channel-type>
-
-	<channel-type id="sambafileshare_status" advanced="true">
-		<item-type>Switch</item-type>
-		<label>Window File Sharing Enabled</label>
-		<description>Indicates whether Window File Sharing is enabled</description>
-		<category>Switch</category>
-	</channel-type>
-
-	<channel-type id="sambaprintershare_status" advanced="true">
-		<item-type>Switch</item-type>
-		<label>Window Printer Sharing Enabled</label>
-		<description>Indicates whether Window Printer Sharing is enabled</description>
-		<category>Switch</category>
-	</channel-type>
-
-	<channel-type id="xdsl_status">
-		<item-type>String</item-type>
-		<label>xDSL Status</label>
-		<description>Status of the xDSL line</description>
+		<label>Channel</label>
+		<description>Wifi channel</description>
 		<state readOnly="true" />
 	</channel-type>
+
+	<channel-type id="wifi_net_state" advanced="true">
+		<item-type>Switch</item-type>
+		<label>Network State</label>
+		<description>Indicates whether the network state</description>
+        <state readOnly="true" />
+	</channel-type>
+
+	<channel-type id="wifi_ssid" advanced="true">
+		<item-type>String</item-type>
+		<label>SSID</label>
+		<description>Indicates the SSID of the Wifi</description>
+        <state readOnly="true" />
+	</channel-type>
+
+	<channel-type id="wifi_type" advanced="true">
+		<item-type>String</item-type>
+		<label>Encryption type</label>
+		<description>Indicates the encryption type of the Wifi</description>
+        <state readOnly="true" />
+	</channel-type>
+
+	<channel-type id="wifi_freewifi" advanced="true">
+		<item-type>Switch</item-type>
+		<label>FreeWifi</label>
+		<description>Indicates whether FreeWifi is enabled</description>
+        <state readOnly="true" />
+	</channel-type>
+
+    <channel-type id="wifi_freewifi_secure" advanced="true">
+        <item-type>Switch</item-type>
+        <label>FreeWifi Secure</label>
+        <description>Indicates whether FreeWifi Secure is enabled</description>
+        <state readOnly="true" />
+    </channel-type>
 
 	<channel-type id="line_status">
 		<item-type>String</item-type>
