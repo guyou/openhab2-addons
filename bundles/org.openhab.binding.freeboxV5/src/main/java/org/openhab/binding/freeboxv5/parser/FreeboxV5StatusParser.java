@@ -53,27 +53,27 @@ public class FreeboxV5StatusParser {
                 logger.debug("Processing " + line);
 
                 // Not a title
-                if (Context.SYSTEM.equals(context) && line.contains("Modèle")) {
-                    String model = line.substring("Modèle".length() + 2);
-                    model = model.trim();
-                    result.model = model;
+                if (Context.SYSTEM.equals(context)) {
+                    if (line.contains("Modèle")) {
+                        String model = line.substring("Modèle".length() + 2);
+                        model = model.trim();
+                        result.model = model;
+                    } else if (line.contains("Version du firmware")) {
+                        String fwversion = line.substring("Version du firmware".length() + 2);
+                        fwversion = fwversion.trim();
+                        result.fwversion = fwversion;
+                    } else if (line.contains("Temps depuis la mise en route")) {
+                        result.uptime = durationParser.match(line);
+                    }
                 }
-                if (Context.SYSTEM.equals(context) && line.contains("Version du firmware")) {
-                    String fwversion = line.substring("Version du firmware".length() + 2);
-                    fwversion = fwversion.trim();
-                    result.fwversion = fwversion;
-                }
-                if (Context.SYSTEM.equals(context) && line.contains("Temps depuis la mise en route")) {
-                    result.uptime = durationParser.match(line);
-                }
-                if (Context.PHONE.equals(context) && line.contains("Etat  ")) {
-                    result.phone.on = line.contains("Ok");
-                }
-                if (Context.PHONE.equals(context) && line.contains("Etat du combiné")) {
-                    result.phone.hang_up = line.contains("Raccroché");
-                }
-                if (Context.PHONE.equals(context) && line.contains("Sonnerie")) {
-                    result.phone.ringing = !line.contains("Inactive");
+                if (Context.PHONE.equals(context)) {
+                    if (line.contains("Etat  ")) {
+                        result.phone.on = line.contains("Ok");
+                    } else if (line.contains("Etat du combiné")) {
+                        result.phone.hang_up = line.contains("Raccroché");
+                    } else if (line.contains("Sonnerie")) {
+                        result.phone.ringing = !line.contains("Inactive");
+                    }
                 }
             } else {
                 // A title
