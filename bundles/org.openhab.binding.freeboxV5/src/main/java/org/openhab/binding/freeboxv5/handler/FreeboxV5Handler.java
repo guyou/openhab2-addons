@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Gaël L'hopital - Initial contribution
  * @author Laurent Garnier - updated to a bridge handler and delegate few things to another handler
- * @author Guilhem Bonnefille - adaptation to FreeboxV5
+ * @author Guilhem Bonnefille - adaptation to FreeboxV5 model
  */
 public class FreeboxV5Handler extends BaseBridgeHandler {
 
