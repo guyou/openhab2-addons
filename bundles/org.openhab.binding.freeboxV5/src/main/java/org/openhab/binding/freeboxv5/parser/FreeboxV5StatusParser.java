@@ -49,6 +49,10 @@ public class FreeboxV5StatusParser {
                 // Ignore empty lines
                 continue;
             }
+            if (line.startsWith("===") || line.startsWith("---") || line.startsWith("___")) {
+                // Ignore ruler lines
+                continue;
+            }
             if (line.startsWith(" ")) {
                 logger.debug("Processing " + line);
 
@@ -91,6 +95,9 @@ public class FreeboxV5StatusParser {
                     logger.debug("Switching context from {} to {}", context, next);
                     // New context
                     context = next;
+                } else {
+                    logger.warn("Unknown context: {}", line);
+                    context = null;
                 }
             }
         }
