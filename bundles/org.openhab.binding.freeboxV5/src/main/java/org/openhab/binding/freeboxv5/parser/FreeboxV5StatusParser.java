@@ -4,8 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
+import org.openhab.binding.freeboxv5.model.UpDownValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +17,12 @@ public class FreeboxV5StatusParser {
     private final Logger logger = LoggerFactory.getLogger(FreeboxV5StatusParser.class);
 
     private final DurationParser durationParser = new DurationParser();
+
+    private final Pattern atmPattern = Pattern.compile("(\\d+) kb/s +(\\d+) kb/s");
+
+    private final Pattern dbPattern = Pattern.compile("(\\d+\\.\\d+) dB +(\\d+\\.\\d+) dB");
+
+    private final Pattern intPattern = Pattern.compile("(\\d+) +(\\d+)");
 
     public enum Context {
         SYSTEM("Informations générales"),
@@ -86,6 +95,48 @@ public class FreeboxV5StatusParser {
                         result.adsl_protocol = line.substring("Protocole".length() + 2).trim();
                     } else if (line.contains("Mode")) {
                         result.adsl_mode = line.substring("Mode".length() + 2).trim();
+                    } else if (line.contains("Débit ATM")) {
+                        Matcher matcher = atmPattern.matcher(line);
+                        if (!matcher.find()) {
+                            throw new IOException("Failed to parse ATM in " + line);
+                        }
+                        result.adsl_atm = new UpDownValue<Integer>(Integer.parseInt(matcher.group(1)),
+                                Integer.parseInt(matcher.group(2)));
+                    } else if (line.contains("Marge de bruit")) {
+                        Matcher matcher = dbPattern.matcher(line);
+                        if (!matcher.find()) {
+                            throw new IOException("Failed to parse noise margin in " + line);
+                        }
+                        result.adsl_noise_margin = new UpDownValue<Double>(Double.parseDouble(matcher.group(1)),
+                                Double.parseDouble(matcher.group(2)));
+                    } else if (line.contains("Atténuation")) {
+                        Matcher matcher = dbPattern.matcher(line);
+                        if (!matcher.find()) {
+                            throw new IOException("Failed to parse attenuation in " + line);
+                        }
+                        result.adsl_attenuation = new UpDownValue<Double>(Double.parseDouble(matcher.group(1)),
+                                Double.parseDouble(matcher.group(2)));
+                    } else if (line.contains("FEC")) {
+                        Matcher matcher = intPattern.matcher(line);
+                        if (!matcher.find()) {
+                            throw new IOException("Failed to parse FEC in " + line);
+                        }
+                        result.adsl_fec = new UpDownValue<Integer>(Integer.parseInt(matcher.group(1)),
+                                Integer.parseInt(matcher.group(2)));
+                    } else if (line.contains("CRC")) {
+                        Matcher matcher = intPattern.matcher(line);
+                        if (!matcher.find()) {
+                            throw new IOException("Failed to parse CRC in " + line);
+                        }
+                        result.adsl_crc = new UpDownValue<Integer>(Integer.parseInt(matcher.group(1)),
+                                Integer.parseInt(matcher.group(2)));
+                    } else if (line.contains("HEC")) {
+                        Matcher matcher = intPattern.matcher(line);
+                        if (!matcher.find()) {
+                            throw new IOException("Failed to parse HEC in " + line);
+                        }
+                        result.adsl_hec = new UpDownValue<Integer>(Integer.parseInt(matcher.group(1)),
+                                Integer.parseInt(matcher.group(2)));
                     }
                 }
             } else {

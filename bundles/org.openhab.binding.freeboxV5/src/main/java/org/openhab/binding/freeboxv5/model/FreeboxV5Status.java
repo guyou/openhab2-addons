@@ -14,6 +14,13 @@ public class FreeboxV5Status {
     public String adsl_protocol;
     public String adsl_mode;
 
+    public UpDownValue<Integer> adsl_atm;
+    public UpDownValue<Double> adsl_noise_margin;
+    public UpDownValue<Double> adsl_attenuation;
+    public UpDownValue<Integer> adsl_fec;
+    public UpDownValue<Integer> adsl_crc;
+    public UpDownValue<Integer> adsl_hec;
+
     @Override
     public String toString() {
         StringBuffer buff = new StringBuffer();

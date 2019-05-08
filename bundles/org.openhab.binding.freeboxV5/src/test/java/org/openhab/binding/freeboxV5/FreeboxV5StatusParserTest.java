@@ -6,6 +6,7 @@ import java.io.InputStream;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
+import org.openhab.binding.freeboxv5.model.UpDownValue;
 import org.openhab.binding.freeboxv5.parser.FreeboxV5StatusParser;
 
 public class FreeboxV5StatusParserTest {
@@ -32,5 +33,12 @@ public class FreeboxV5StatusParserTest {
         Assert.assertEquals("Showtime", status.adsl_state);
         Assert.assertEquals("ADSL2+", status.adsl_protocol);
         Assert.assertEquals("Interleaved", status.adsl_mode);
+
+        Assert.assertEquals(new UpDownValue<>(15286, 1093), status.adsl_atm);
+        Assert.assertEquals(new UpDownValue<>(6.0, 7.4), status.adsl_noise_margin);
+        Assert.assertEquals(new UpDownValue<>(32.5, 19.0), status.adsl_attenuation);
+        Assert.assertEquals(new UpDownValue<>(836528, 782458), status.adsl_fec);
+        Assert.assertEquals(new UpDownValue<>(521506, 0), status.adsl_crc);
+        Assert.assertEquals(new UpDownValue<>(2244, 124383), status.adsl_hec);
     }
 }
