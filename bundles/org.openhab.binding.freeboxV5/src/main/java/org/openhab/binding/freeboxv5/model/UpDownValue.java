@@ -4,7 +4,7 @@ public class UpDownValue<ValueType extends Number> {
     public final ValueType up;
     public final ValueType down;
 
-    public UpDownValue(ValueType up, ValueType down) {
+    public UpDownValue(ValueType down, ValueType up) {
         this.up = up;
         this.down = down;
     }
