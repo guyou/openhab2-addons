@@ -63,7 +63,7 @@ public class FreeboxV5StatusParser {
                 continue;
             }
             if (line.startsWith(" ")) {
-                logger.debug("Processing " + line);
+                logger.trace("Processing " + line);
 
                 // Not a title
                 if (Context.SYSTEM.equals(context)) {
@@ -143,7 +143,7 @@ public class FreeboxV5StatusParser {
                 // A title
                 Context next = Context.match(line);
                 if (null != next) {
-                    logger.debug("Switching context from {} to {}", context, next);
+                    logger.trace("Switching context from {} to {}", context, next);
                     // New context
                     context = next;
                 } else {
