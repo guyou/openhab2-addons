@@ -112,30 +112,30 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         }
         updateProperties(properties);
 
-        updateChannelDecimalState(FreeboxV5BindingConstants.UPTIME, status.uptime);
-        updateChannelSwitchState(FreeboxV5BindingConstants.RESTARTED, status.uptime < previousUptime);
+        updateChannelDecimalState("general", FreeboxV5BindingConstants.UPTIME, status.uptime);
+        updateChannelSwitchState("general", FreeboxV5BindingConstants.RESTARTED, status.uptime < previousUptime);
         previousUptime = status.uptime;
 
         // ADSL
-        updateChannelStringState(FreeboxV5BindingConstants.ADSL_STATE, status.adsl_state);
-        updateChannelStringState(FreeboxV5BindingConstants.ADSL_MODE, status.adsl_mode);
-        updateChannelStringState(FreeboxV5BindingConstants.ADSL_PROTO, status.adsl_protocol);
+        updateChannelStringState("adsl", FreeboxV5BindingConstants.ADSL_STATE, status.adsl_state);
+        updateChannelStringState("adsl", FreeboxV5BindingConstants.ADSL_MODE, status.adsl_mode);
+        updateChannelStringState("adsl", FreeboxV5BindingConstants.ADSL_PROTO, status.adsl_protocol);
     }
 
-    private void updateChannelStringState(String channel, String state) {
-        updateState(new ChannelUID(getThing().getUID(), channel), new StringType(state));
+    private void updateChannelStringState(String group, String channel, String state) {
+        updateState(new ChannelUID(getThing().getUID(), group, channel), new StringType(state));
     }
 
-    private void updateChannelSwitchState(String channel, boolean state) {
-        updateState(new ChannelUID(getThing().getUID(), channel), state ? OnOffType.ON : OnOffType.OFF);
+    private void updateChannelSwitchState(String group, String channel, boolean state) {
+        updateState(new ChannelUID(getThing().getUID(), group, channel), state ? OnOffType.ON : OnOffType.OFF);
     }
 
-    private void updateChannelDecimalState(String channel, int state) {
-        updateState(new ChannelUID(getThing().getUID(), channel), new DecimalType(state));
+    private void updateChannelDecimalState(String group, String channel, int state) {
+        updateState(new ChannelUID(getThing().getUID(), group, channel), new DecimalType(state));
     }
 
-    private void updateChannelDecimalState(String channel, long state) {
-        updateState(new ChannelUID(getThing().getUID(), channel), new DecimalType(state));
+    private void updateChannelDecimalState(String group, String channel, long state) {
+        updateState(new ChannelUID(getThing().getUID(), group, channel), new DecimalType(state));
     }
 
     @Override

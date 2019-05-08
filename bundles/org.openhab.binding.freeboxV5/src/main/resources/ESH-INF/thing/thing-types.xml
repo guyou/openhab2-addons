@@ -6,19 +6,8 @@
 	<bridge-type id="server">
 		<label>Freebox V5</label>
 		<description>Provides various informations regarding the status of the Freebox Server</description>
-
+<!-- 
 		<channels>
-			<channel id="fwversion" typeId="fwversion" />
-			<channel id="uptime" typeId="uptime" />
-			<channel id="restarted" typeId="restarted" />
-			<channel id="adsl_state" typeId="adsl_state" />
-			<channel id="adsl_protocol" typeId="adsl_protocol" />
-			<channel id="adsl_mode" typeId="adsl_mode" />
-			<channel id="fanspeed" typeId="fanspeed" />
-			<channel id="reboot" typeId="reboot" />
-			<channel id="lcd_brightness" typeId="lcd_brightness" />
-			<channel id="lcd_orientation" typeId="lcd_orientation" />
-			<channel id="lcd_forced" typeId="lcd_forced" />
 			<channel id="wifi_status" typeId="wifi_status" />
 			<channel id="ftp_status" typeId="ftp_status" />
 			<channel id="upnpav_status" typeId="upnpav_status" />
@@ -32,6 +21,11 @@
 			<channel id="bytes_up" typeId="bytes_up" />
 			<channel id="bytes_down" typeId="bytes_down" />
 		</channels>
+		-->
+		<channel-groups>
+            <channel-group id="general" typeId="general" />
+            <channel-group id="adsl" typeId="adsl" />
+		</channel-groups>
 
 		<properties>
 			<property name="vendor">Freebox SAS</property>
@@ -135,6 +129,26 @@
 
 		</config-description>
 	</thing-type>
+
+    <channel-group-type id="general">
+        <label>General</label>
+        <description>The general parameters</description>
+        <channels>
+            <channel id="fwversion" typeId="fwversion" />
+            <channel id="uptime" typeId="uptime" />
+            <channel id="restarted" typeId="restarted" />
+        </channels>
+    </channel-group-type>
+
+    <channel-group-type id="adsl" advanced="true">
+        <label>ADSL</label>
+        <description>The ADSL parameters</description>
+        <channels>
+            <channel id="adsl_state" typeId="adsl_state" />
+            <channel id="adsl_protocol" typeId="adsl_protocol" />
+            <channel id="adsl_mode" typeId="adsl_mode" />
+        </channels>
+    </channel-group-type>
 
 	<channel-group-type id="state">
 		<label>Phone</label>
