@@ -21,6 +21,16 @@ public class FreeboxV5Status {
     public UpDownValue<Integer> adsl_crc;
     public UpDownValue<Integer> adsl_hec;
 
+    // Wifi
+    public boolean wifi_state;
+    public String wifi_model;
+    public int wifi_channel;
+    public boolean wifi_net_state;
+    public String wifi_ssid;
+    public String wifi_type;
+    public boolean wifi_freewifi_secure;
+    public boolean wifi_freewifi;
+
     @Override
     public String toString() {
         StringBuffer buff = new StringBuffer();

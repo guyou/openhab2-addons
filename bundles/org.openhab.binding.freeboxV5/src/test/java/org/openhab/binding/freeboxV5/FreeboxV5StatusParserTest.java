@@ -40,5 +40,16 @@ public class FreeboxV5StatusParserTest {
         Assert.assertEquals(new UpDownValue<>(836528, 782458), status.adsl_fec);
         Assert.assertEquals(new UpDownValue<>(521506, 0), status.adsl_crc);
         Assert.assertEquals(new UpDownValue<>(2244, 124383), status.adsl_hec);
+
+        // Wifi
+        Assert.assertTrue(status.wifi_state);
+        Assert.assertEquals("Ralink RT2880", status.wifi_model);
+        Assert.assertEquals(9, status.wifi_channel);
+        Assert.assertTrue(status.wifi_net_state);
+        Assert.assertEquals("BSSID", status.wifi_ssid);
+        Assert.assertEquals("WPA", status.wifi_type);
+        Assert.assertTrue(status.wifi_freewifi);
+        Assert.assertTrue(status.wifi_freewifi_secure);
+
     }
 }

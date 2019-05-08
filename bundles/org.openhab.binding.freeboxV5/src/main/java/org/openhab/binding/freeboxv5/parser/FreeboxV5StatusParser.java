@@ -27,7 +27,8 @@ public class FreeboxV5StatusParser {
     public enum Context {
         SYSTEM("Informations générales"),
         PHONE("Téléphone"),
-        ADSL("Adsl");
+        ADSL("Adsl"),
+        WIFI("Wifi");
 
         final String title;
 
@@ -137,6 +138,25 @@ public class FreeboxV5StatusParser {
                         }
                         result.adsl_hec = new UpDownValue<Integer>(Integer.parseInt(matcher.group(1)),
                                 Integer.parseInt(matcher.group(2)));
+                    }
+                }
+                if (Context.WIFI.equals(context)) {
+                    if (line.startsWith("  Etat  ")) {
+                        result.wifi_state = line.contains("Ok");
+                    } else if (line.contains("Modèle")) {
+                        result.wifi_model = line.substring("Modèle".length() + 2).trim();
+                    } else if (line.contains("Canal")) {
+                        result.wifi_channel = Integer.parseInt(line.substring("Canal".length() + 2).trim());
+                    } else if (line.contains("État du réseau")) {
+                        result.wifi_net_state = line.contains("Activé");
+                    } else if (line.contains("Ssid")) {
+                        result.wifi_ssid = line.substring("Ssid".length() + 2).trim();
+                    } else if (line.contains("Type de clé")) {
+                        result.wifi_type = line.substring("Type de clé".length() + 2).trim();
+                    } else if (line.contains("FreeWifi Secure")) {
+                        result.wifi_freewifi_secure = line.contains("Actif");
+                    } else if (line.contains("FreeWifi")) {
+                        result.wifi_freewifi = line.contains("Actif");
                     }
                 }
             } else {
