@@ -179,7 +179,7 @@
 		<state readOnly="true" pattern="%d s" />
 	</channel-type>
 
-	<channel-type id="restarted" advanced="true">
+	<channel-type id="restarted">
 		<item-type>Switch</item-type>
 		<label>Just restarted</label>
 		<description>Has the Freebox server have restarted during the last poll period</description>
