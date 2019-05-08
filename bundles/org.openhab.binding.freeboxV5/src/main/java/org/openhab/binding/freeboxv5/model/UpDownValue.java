@@ -1,8 +1,8 @@
 package org.openhab.binding.freeboxv5.model;
 
 public class UpDownValue<ValueType extends Number> {
-    public ValueType up;
-    public ValueType down;
+    public final ValueType up;
+    public final ValueType down;
 
     public UpDownValue(ValueType up, ValueType down) {
         this.up = up;
