@@ -23,8 +23,14 @@ public class FreeboxV5StatusParserTest {
 
         Assert.assertEquals(261 * 24 * 60 + 12 * 60 + 48, status.uptime);
 
+        // Phone
         Assert.assertTrue(status.phone.on);
         Assert.assertTrue(status.phone.hang_up);
         Assert.assertFalse(status.phone.ringing);
+
+        // ADSL
+        Assert.assertEquals("Showtime", status.adsl_state);
+        Assert.assertEquals("ADSL2+", status.adsl_protocol);
+        Assert.assertEquals("Interleaved", status.adsl_mode);
     }
 }

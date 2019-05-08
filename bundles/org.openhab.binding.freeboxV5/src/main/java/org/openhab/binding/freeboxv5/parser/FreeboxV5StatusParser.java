@@ -75,6 +75,15 @@ public class FreeboxV5StatusParser {
                         result.phone.ringing = !line.contains("Inactive");
                     }
                 }
+                if (Context.ADSL.equals(context)) {
+                    if (line.startsWith("  Etat  ")) {
+                        result.adsl_state = line.substring("Etat  ".length() + 2).trim();
+                    } else if (line.contains("Protocole")) {
+                        result.adsl_protocol = line.substring("Protocole".length() + 2).trim();
+                    } else if (line.contains("Mode")) {
+                        result.adsl_mode = line.substring("Mode".length() + 2).trim();
+                    }
+                }
             } else {
                 // A title
                 Context next = Context.match(line);
