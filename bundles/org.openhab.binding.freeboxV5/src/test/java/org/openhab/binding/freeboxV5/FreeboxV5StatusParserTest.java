@@ -51,5 +51,18 @@ public class FreeboxV5StatusParserTest {
         Assert.assertTrue(status.wifi_freewifi);
         Assert.assertTrue(status.wifi_freewifi_secure);
 
+        // Network
+        Assert.assertEquals("00:11:22:33:44:55:66", status.network_mac);
+        Assert.assertEquals("1.2.3.4", status.network_ip_public);
+        Assert.assertFalse(status.network_ipv6);
+        Assert.assertTrue(status.network_router);
+        Assert.assertEquals("192.168.0.254", status.network_ip_private);
+        Assert.assertEquals("192.168.0.0", status.network_ip_dmz);
+        Assert.assertEquals("192.168.0.3", status.network_ip_freeplayer);
+        Assert.assertFalse(status.network_ping);
+        Assert.assertFalse(status.network_wol_proxy);
+        Assert.assertTrue(status.network_dhcp);
+        // Plage d'adresses dynamique 192.168.0.1 - 192.168.0.25
+
     }
 }

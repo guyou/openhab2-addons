@@ -28,7 +28,8 @@ public class FreeboxV5StatusParser {
         SYSTEM("Informations générales"),
         PHONE("Téléphone"),
         ADSL("Adsl"),
-        WIFI("Wifi");
+        WIFI("Wifi"),
+        NETWORK("Réseau");
 
         final String title;
 
@@ -157,6 +158,34 @@ public class FreeboxV5StatusParser {
                         result.wifi_freewifi_secure = line.contains("Actif");
                     } else if (line.contains("FreeWifi")) {
                         result.wifi_freewifi = line.contains("Actif");
+                    }
+                }
+
+                // Network
+                if (Context.NETWORK.equals(context)) {
+                    if (line.contains("Adresse MAC Freebox")) {
+                        result.network_mac = line.substring("Adresse MAC Freebox".length() + 2).trim();
+                    } else if (line.contains("Ipv6")) {
+                        result.network_ipv6 = line.contains("Activé");
+                    } else if (line.contains("Mode routeur")) {
+                        result.network_router = line.contains("Activé");
+                    } else if (line.contains("Adresse IP privée")) {
+                        result.network_ip_private = line.substring("Adresse IP privée".length() + 2).trim();
+                    } else if (line.contains("Adresse IP DMZ")) {
+                        result.network_ip_dmz = line.substring("Adresse IP DMZ".length() + 2).trim();
+                    } else if (line.contains("Adresse IP Freeplayer")) {
+                        result.network_ip_freeplayer = line.substring("Adresse IP Freeplayer".length() + 2).trim();
+                    } else if (line.startsWith("  Adresse IP")) {
+                        result.network_ip_public = line.substring("Adresse IP".length() + 2).trim();
+                    } else if (line.contains("Réponse au ping")) {
+                        result.network_ping = line.contains("Activé");
+                    } else if (line.contains("Proxy Wake On Lan")) {
+                        result.network_wol_proxy = line.contains("Activé");
+                    } else if (line.contains("Serveur DHCP")) {
+                        result.network_dhcp = line.contains("Activé");
+                    } else if (line.contains("Plage d'adresses dynamique")) {
+                        String tmp = line.substring("Plage d'adresses dynamique".length() + 2).trim();
+                        result.network_dyn_range = tmp.split(" ");
                     }
                 }
             } else {

@@ -31,6 +31,19 @@ public class FreeboxV5Status {
     public boolean wifi_freewifi_secure;
     public boolean wifi_freewifi;
 
+    // Network
+    public String network_mac;
+    public String network_ip_public;
+    public boolean network_ipv6;
+    public boolean network_router;
+    public String network_ip_private;
+    public String network_ip_dmz;
+    public String network_ip_freeplayer;
+    public boolean network_ping;
+    public boolean network_wol_proxy;
+    public boolean network_dhcp;
+    public String[] network_dyn_range;
+
     @Override
     public String toString() {
         StringBuffer buff = new StringBuffer();
