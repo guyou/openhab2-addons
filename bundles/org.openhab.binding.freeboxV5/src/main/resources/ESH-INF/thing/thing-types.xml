@@ -8,10 +8,6 @@
 		<description>Provides various informations regarding the status of the Freebox Server</description>
 <!-- 
 		<channels>
-			<channel id="ftp_status" typeId="ftp_status" />
-			<channel id="upnpav_status" typeId="upnpav_status" />
-			<channel id="sambafileshare_status" typeId="sambafileshare_status" />
-			<channel id="sambaprintershare_status" typeId="sambaprintershare_status" />
 			<channel id="xdsl_status" typeId="xdsl_status" />
 			<channel id="line_status" typeId="line_status" />
 			<channel id="ipv4" typeId="ipv4" />
@@ -475,34 +471,6 @@
 		<label>IP Address</label>
 		<description>Public IP Address of the Freebox Server</description>
 		<state readOnly="true" />
-	</channel-type>
-
-	<channel-type id="rate_up" advanced="true">
-		<item-type>Number</item-type>
-		<label>Upload Rate</label>
-		<description>Current upload rate in byte/s</description>
-		<state readOnly="true" pattern="%d b/s" />
-	</channel-type>
-
-	<channel-type id="rate_down" advanced="true">
-		<item-type>Number</item-type>
-		<label>Download Rate</label>
-		<description>Current download rate in byte/s</description>
-		<state readOnly="true" pattern="%d b/s" />
-	</channel-type>
-
-	<channel-type id="bytes_up" advanced="true">
-		<item-type>Number</item-type>
-		<label>Uploaded</label>
-		<description>Total uploaded bytes since last connection</description>
-		<state readOnly="true" pattern="%d bytes" />
-	</channel-type>
-
-	<channel-type id="bytes_down" advanced="true">
-		<item-type>Number</item-type>
-		<label>Downloaded</label>
-		<description>Total downloaded bytes since last connection</description>
-		<state readOnly="true" pattern="%d bytes" />
 	</channel-type>
 
 	<channel-type id="onhook">
