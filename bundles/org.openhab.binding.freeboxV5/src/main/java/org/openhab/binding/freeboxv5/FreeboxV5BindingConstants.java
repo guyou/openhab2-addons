@@ -76,17 +76,7 @@ public class FreeboxV5BindingConstants {
     public static final String WIFI_FREEWIFI_SEC = "wifi_freewifi_secure";
     public static final String ONHOOK = "onhook";
     public static final String RINGING = "ringing";
-    public static final String CALLNUMBER = "call_number";
-    public static final String CALLDURATION = "call_duration";
-    public static final String CALLTIMESTAMP = "call_timestamp";
-    public static final String CALLSTATUS = "call_status";
-    public static final String CALLNAME = "call_name";
     public static final String REBOOT = "reboot";
-    public static final String FTPSTATUS = "ftp_status";
-    public static final String AIRMEDIASTATUS = "airmedia_status";
-    public static final String UPNPAVSTATUS = "upnpav_status";
-    public static final String SAMBAFILESTATUS = "sambafileshare_status";
-    public static final String SAMBAPRINTERSTATUS = "sambaprintershare_status";
     public static final String REACHABLE = "reachable";
     public static final String PLAYURL = "playurl";
     public static final String STOP = "stop";
