@@ -31,6 +31,7 @@
             <channel-group id="adsl_crc" typeId="adsl_crc" />
             <channel-group id="adsl_hec" typeId="adsl_hec" />
             <channel-group id="wifi" typeId="wifi" />
+            <channel-group id="network" typeId="network" />
 		</channel-groups>
 
 		<properties>
@@ -372,6 +373,93 @@
         <item-type>Switch</item-type>
         <label>FreeWifi Secure</label>
         <description>Indicates whether FreeWifi Secure is enabled</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-group-type id="network" advanced="true">
+        <label>Network</label>
+        <description>Network related parameters</description>
+        <channels>
+		    <channel id="network_mac" typeId="network_mac" />
+		    <channel id="network_ipv6" typeId="network_ipv6" />
+		    <channel id="network_ip_public" typeId="network_ip_public" />
+		    <channel id="network_router" typeId="network_router" />
+		    <channel id="network_ip_dmz" typeId="network_ip_dmz" />
+		    <channel id="network_ip_private" typeId="network_ip_private" />
+		    <channel id="network_ip_freeplayer" typeId="network_ip_freeplayer" />
+		    <channel id="network_ping" typeId="network_ping" />
+		    <channel id="network_wol_proxy" typeId="network_wol_proxy" />
+		    <channel id="network_dhcp" typeId="network_dhcp" />
+        </channels>
+    </channel-group-type>
+
+    <channel-type id="network_mac" advanced="true">
+        <item-type>String</item-type>
+        <label>Network MAC</label>
+        <description>MAC address</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_ip_public" advanced="true">
+        <item-type>String</item-type>
+        <label>Public IP</label>
+        <description>Public IP address</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_ipv6" advanced="true">
+        <item-type>Switch</item-type>
+        <label>IPv6</label>
+        <description>Indicates whether the IPv6 is activated</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_router" advanced="true">
+        <item-type>Switch</item-type>
+        <label>Router</label>
+        <description>Indicates whether the router mode is activated</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_ip_private" advanced="true">
+        <item-type>String</item-type>
+        <label>Private IP</label>
+        <description>IP address in the private network</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_ip_dmz" advanced="true">
+        <item-type>String</item-type>
+        <label>DMZ IP</label>
+        <description>IP address of the DMZ</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_ip_freeplayer" advanced="true">
+        <item-type>String</item-type>
+        <label>Freeplayer IP</label>
+        <description>IP address of the Freeplayer</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_ping" advanced="true">
+        <item-type>Switch</item-type>
+        <label>Ping</label>
+        <description>Indicates whether the answer to ping is activated</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_wol_proxy" advanced="true">
+        <item-type>Switch</item-type>
+        <label>Wake On Lan Proxy</label>
+        <description>Indicates whether the Wake On Lan Proxy is activated</description>
+        <state readOnly="true" />
+    </channel-type>
+
+    <channel-type id="network_dhcp" advanced="true">
+        <item-type>Switch</item-type>
+        <label>DHCP</label>
+        <description>Indicates whether the DHCP server is activated</description>
         <state readOnly="true" />
     </channel-type>
 

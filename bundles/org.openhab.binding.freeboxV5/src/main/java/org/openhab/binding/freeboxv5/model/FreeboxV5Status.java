@@ -61,6 +61,25 @@ public class FreeboxV5Status {
         buff.append(", ");
         buff.append("mode=").append(adsl_mode);
         buff.append("}");
+        buff.append(", Network={");
+        buff.append("ip_public=").append(network_ip_public);
+        buff.append(", ");
+        buff.append("ip_private=").append(network_ip_private);
+        buff.append(", ");
+        buff.append("freeplayer=").append(network_ip_freeplayer);
+        buff.append(", ");
+        buff.append("dmz=").append(network_ip_dmz);
+        buff.append(", ");
+        buff.append("ipv6=").append(network_ipv6);
+        buff.append(", ");
+        buff.append("router=").append(network_router);
+        buff.append(", ");
+        buff.append("ping=").append(network_ping);
+        buff.append(", ");
+        buff.append("wol=").append(network_wol_proxy);
+        buff.append(", ");
+        buff.append("dhcp=").append(network_dhcp);
+        buff.append("}");
         buff.append('}');
         return buff.toString();
     }

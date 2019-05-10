@@ -139,6 +139,19 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         updateChannelSwitchState("wifi", FreeboxV5BindingConstants.WIFI_FREEWIFI_SEC, status.wifi_freewifi_secure);
         updateChannelSwitchState("wifi", FreeboxV5BindingConstants.WIFI_FREEWIFI, status.wifi_freewifi);
 
+        // Network
+        updateChannelStringState("network", FreeboxV5BindingConstants.NETWORK_MAC, status.network_mac);
+        updateChannelStringState("network", FreeboxV5BindingConstants.NETWORK_IP_PUBLIC, status.network_ip_public);
+        updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_IPV6, status.network_ipv6);
+        updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_ROUTER, status.network_router);
+        updateChannelStringState("network", FreeboxV5BindingConstants.NETWORK_IP_PRIVATE, status.network_ip_private);
+        updateChannelStringState("network", FreeboxV5BindingConstants.NETWORK_IP_DMZ, status.network_ip_dmz);
+        updateChannelStringState("network", FreeboxV5BindingConstants.NETWORK_IP_FREEPLAYER,
+                status.network_ip_freeplayer);
+        updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_PING, status.network_ping);
+        updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_WOL_PROXY, status.network_wol_proxy);
+        updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_DHCP, status.network_dhcp);
+
     }
 
     private void updateChannelStringState(String group, String channel, String state) {

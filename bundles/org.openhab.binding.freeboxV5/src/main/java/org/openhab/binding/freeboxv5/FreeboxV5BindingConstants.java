@@ -80,4 +80,15 @@ public class FreeboxV5BindingConstants {
     public static final String REACHABLE = "reachable";
     public static final String PLAYURL = "playurl";
     public static final String STOP = "stop";
+
+    public static final String NETWORK_MAC = "network_mac";
+    public static final String NETWORK_IPV6 = "network_ipv6";
+    public static final String NETWORK_IP_PUBLIC = "network_ip_public";
+    public static final String NETWORK_ROUTER = "network_router";
+    public static final String NETWORK_IP_DMZ = "network_ip_dmz";
+    public static final String NETWORK_IP_PRIVATE = "network_ip_private";
+    public static final String NETWORK_IP_FREEPLAYER = "network_ip_freeplayer";
+    public static final String NETWORK_PING = "network_ping";
+    public static final String NETWORK_WOL_PROXY = "network_wol_proxy";
+    public static final String NETWORK_DHCP = "network_dhcp";
 }
