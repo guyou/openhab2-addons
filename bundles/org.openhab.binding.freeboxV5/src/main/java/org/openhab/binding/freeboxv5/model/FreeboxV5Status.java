@@ -1,5 +1,8 @@
 package org.openhab.binding.freeboxv5.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FreeboxV5Status {
 
     public String model;
@@ -43,6 +46,7 @@ public class FreeboxV5Status {
     public boolean network_wol_proxy;
     public boolean network_dhcp;
     public String[] network_dyn_range;
+    public List<DhcpLease> network_leases = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -79,6 +83,8 @@ public class FreeboxV5Status {
         buff.append("wol=").append(network_wol_proxy);
         buff.append(", ");
         buff.append("dhcp=").append(network_dhcp);
+        buff.append(", ");
+        buff.append("leases=").append(network_leases);
         buff.append("}");
         buff.append('}');
         return buff.toString();

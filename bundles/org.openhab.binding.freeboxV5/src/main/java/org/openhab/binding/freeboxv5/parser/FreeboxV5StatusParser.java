@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.openhab.binding.freeboxv5.model.DhcpLease;
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
 import org.openhab.binding.freeboxv5.model.UpDownValue;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public class FreeboxV5StatusParser {
 
     private final Pattern intPattern = Pattern.compile("(\\d+) +(\\d+)");
 
+    private final Pattern dhcpLeasePattern = Pattern.compile("([0-9A-F]+:(?:[:0-9A-F]+)) +([0-9\\.]+)");
     public enum Context {
         SYSTEM("Informations générales"),
         PHONE("Téléphone"),
@@ -186,6 +188,12 @@ public class FreeboxV5StatusParser {
                     } else if (line.contains("Plage d'adresses dynamique")) {
                         String tmp = line.substring("Plage d'adresses dynamique".length() + 2).trim();
                         result.network_dyn_range = tmp.split(" ");
+                    } else {
+                        Matcher matcher = dhcpLeasePattern.matcher(line);
+                        if (matcher.find()) {
+                            DhcpLease lease = new DhcpLease(matcher.group(1), matcher.group(2));
+                            result.network_leases.add(lease);
+                        }
                     }
                 }
             } else {

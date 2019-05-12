@@ -64,5 +64,6 @@ public class FreeboxV5StatusParserTest {
         Assert.assertTrue(status.network_dhcp);
         // Plage d'adresses dynamique 192.168.0.1 - 192.168.0.25
 
+        Assert.assertEquals(13, status.network_leases.size());
     }
 }
