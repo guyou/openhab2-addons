@@ -103,7 +103,7 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         logger.debug("Server state polled.");
     }
 
-    private void updateServerState(FreeboxV5Status status) {
+    private void updateServerState(final FreeboxV5Status status) {
         Map<String, String> properties = editProperties();
         if (StringUtils.isNotEmpty(status.model)) {
             properties.put(Thing.PROPERTY_MODEL_ID, status.model);
