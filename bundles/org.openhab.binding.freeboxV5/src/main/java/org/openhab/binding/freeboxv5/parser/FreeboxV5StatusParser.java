@@ -87,7 +87,7 @@ public class FreeboxV5StatusParser {
                     if (line.contains("Etat  ")) {
                         result.phone.on = line.contains("Ok");
                     } else if (line.contains("Etat du combiné")) {
-                        result.phone.hang_up = line.contains("Raccroché");
+                        result.phone.onhook = line.contains("Raccroché");
                     } else if (line.contains("Sonnerie")) {
                         result.phone.ringing = !line.contains("Inactive");
                     }

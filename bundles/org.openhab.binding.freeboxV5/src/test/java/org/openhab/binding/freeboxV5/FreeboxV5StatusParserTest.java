@@ -26,7 +26,7 @@ public class FreeboxV5StatusParserTest {
 
         // Phone
         Assert.assertTrue(status.phone.on);
-        Assert.assertTrue(status.phone.hang_up);
+        Assert.assertTrue(status.phone.onhook);
         Assert.assertFalse(status.phone.ringing);
 
         // ADSL
