@@ -12,6 +12,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +32,7 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.io.net.http.HttpUtil;
 import org.openhab.binding.freeboxv5.FreeboxV5BindingConstants;
+import org.openhab.binding.freeboxv5.PhoneStatusListener;
 import org.openhab.binding.freeboxv5.config.FreeboxV5ServerConfiguration;
 import org.openhab.binding.freeboxv5.model.FreeboxV5Status;
 import org.openhab.binding.freeboxv5.model.UpDownValue;
@@ -55,6 +58,8 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
 
     private long previousUptime;
 
+    private final List<PhoneStatusListener> phoneStatusListener = new ArrayList<>();
+    
     public FreeboxV5Handler(Bridge bridge) {
         super(bridge);
 
@@ -152,6 +157,8 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
         updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_WOL_PROXY, status.network_wol_proxy);
         updateChannelSwitchState("network", FreeboxV5BindingConstants.NETWORK_DHCP, status.network_dhcp);
 
+        // Phone
+        phoneStatusListener.forEach(listener -> listener.update(status.phone));
     }
 
     private void updateChannelStringState(String group, String channel, String state) {
@@ -206,4 +213,12 @@ public class FreeboxV5Handler extends BaseBridgeHandler {
                 break;
         }
     }
+
+	public void registerPhoneStatusListener(PhoneStatusListener listener) {
+		this.phoneStatusListener.add(listener);
+	}
+
+	public void unregisterPhoneStatusListener(PhoneStatusListener listener) {
+		this.phoneStatusListener.remove(listener);
+	}
 }

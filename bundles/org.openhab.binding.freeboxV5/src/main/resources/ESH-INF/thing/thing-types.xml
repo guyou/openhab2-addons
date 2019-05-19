@@ -59,56 +59,13 @@
 		</supported-bridge-type-refs>
 
 		<label>Phone</label>
-		<description>Provides various informations regarding the phone state and the phone calls</description>
-
-		<channel-groups>
-			<channel-group id="state" typeId="state" />
-			<channel-group id="any" typeId="any" />
-			<channel-group id="accepted" typeId="accepted" />
-			<channel-group id="missed" typeId="missed" />
-			<channel-group id="outgoing" typeId="outgoing" />
-		</channel-groups>
-
-		<config-description>
-			<parameter name="refreshPhoneInterval" type="integer" min="0">
-				<label>Phone State Refresh Interval</label>
-				<description>The refresh interval in seconds which is used to poll given Freebox Server for phone state</description>
-				<default>2</default>
-				<required>false</required>
-			</parameter>
-
-			<parameter name="refreshPhoneCallsInterval" type="integer" min="0">
-				<label>Phone Calls Refresh Interval</label>
-				<description>The refresh interval in seconds which is used to poll given Freebox Server for phone calls</description>
-				<default>60</default>
-				<required>false</required>
-			</parameter>
-
-		</config-description>
-	</thing-type>
-
-
-	<thing-type id="net_interface">
-		<supported-bridge-type-refs>
-			<bridge-type-ref id="server" />
-		</supported-bridge-type-refs>
-
-		<label>Network Interface</label>
-		<description>Provides network interface reachability</description>
+		<description>Provides various informations regarding the phone state</description>
 
 		<channels>
-			<channel id="reachable" typeId="reachable" />
+			<channel id="onhook" typeId="onhook" />
+			<channel id="ringing" typeId="ringing" />
 		</channels>
 
-		<config-description>
-			<parameter name="ipAddress" type="text">
-				<label>IP Address</label>
-				<description>The IP address (v4 or v6) of the network interface</description>
-				<default></default>
-				<required>true</required>
-			</parameter>
-
-		</config-description>
 	</thing-type>
 
     <channel-group-type id="general">
@@ -130,15 +87,6 @@
             <channel id="adsl_mode" typeId="adsl_mode" />
         </channels>
     </channel-group-type>
-
-	<channel-group-type id="state">
-		<label>Phone</label>
-		<description>The phone state</description>
-		<channels>
-			<channel id="onhook" typeId="onhook" />
-			<channel id="ringing" typeId="ringing" />
-		</channels>
-	</channel-group-type>
 
 	<channel-type id="fwversion" advanced="true">
 		<item-type>String</item-type>

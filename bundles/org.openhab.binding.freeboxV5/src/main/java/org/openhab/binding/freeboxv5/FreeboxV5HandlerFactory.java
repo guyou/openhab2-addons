@@ -24,6 +24,7 @@ import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory;
 import org.openhab.binding.freeboxv5.handler.FreeboxV5Handler;
+import org.openhab.binding.freeboxv5.handler.FreeboxV5PhoneHandler;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
@@ -41,15 +42,6 @@ public class FreeboxV5HandlerFactory extends BaseThingHandlerFactory {
 
     private final Logger logger = LoggerFactory.getLogger(FreeboxV5HandlerFactory.class);
 
-    /*
-     * private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Stream
-     * .concat(FreeboxV5BindingConstants.SUPPORTED_BRIDGE_TYPES_UIDS.stream(),
-     * FreeboxV5BindingConstants.SUPPORTED_THING_TYPES_UIDS.stream())
-     * .collect(Collectors.toSet());
-     */
-    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections
-            .singleton(FreeboxV5BindingConstants.FREEBOX_BRIDGE_TYPE_SERVER);
-
     @Override
     protected void activate(ComponentContext componentContext) {
         super.activate(componentContext);
@@ -57,7 +49,7 @@ public class FreeboxV5HandlerFactory extends BaseThingHandlerFactory {
 
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
-        return SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID);
+        return FreeboxV5BindingConstants.SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID);
     }
 
     @Override
@@ -65,7 +57,7 @@ public class FreeboxV5HandlerFactory extends BaseThingHandlerFactory {
             ThingUID bridgeUID) {
         if (thingTypeUID.equals(FreeboxV5BindingConstants.FREEBOX_BRIDGE_TYPE_SERVER)) {
             return super.createThing(thingTypeUID, configuration, thingUID, null);
-        } else if (FreeboxV5BindingConstants.SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID)) {
+        } else if (FreeboxV5BindingConstants.FREEBOX_THING_TYPE_PHONE.equals(thingTypeUID)) {
             ThingUID newThingUID;
             if (bridgeUID != null && thingUID != null) {
                 newThingUID = new ThingUID(thingTypeUID, bridgeUID, thingUID.getId());
@@ -85,8 +77,10 @@ public class FreeboxV5HandlerFactory extends BaseThingHandlerFactory {
         if (thingTypeUID.equals(FreeboxV5BindingConstants.FREEBOX_BRIDGE_TYPE_SERVER)) {
             FreeboxV5Handler handler = new FreeboxV5Handler((Bridge) thing);
             return handler;
+        } else if (thingTypeUID.equals(FreeboxV5BindingConstants.FREEBOX_THING_TYPE_PHONE)) {
+        	FreeboxV5PhoneHandler handler = new FreeboxV5PhoneHandler(thing);
+        	return handler;
         }
-
         return null;
     }
 
