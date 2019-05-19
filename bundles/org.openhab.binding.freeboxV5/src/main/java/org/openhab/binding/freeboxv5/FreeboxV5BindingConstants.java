@@ -30,8 +30,6 @@ public class FreeboxV5BindingConstants {
 
     // List of all Thing Type UIDs
     public static final ThingTypeUID FREEBOX_THING_TYPE_PHONE = new ThingTypeUID(BINDING_ID, "phone");
-    public static final ThingTypeUID FREEBOX_THING_TYPE_NET_DEVICE = new ThingTypeUID(BINDING_ID, "net_device");
-    public static final ThingTypeUID FREEBOX_THING_TYPE_NET_INTERFACE = new ThingTypeUID(BINDING_ID, "net_interface");
 
     // All supported Bridge types
     public static final Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = Collections
@@ -39,8 +37,7 @@ public class FreeboxV5BindingConstants {
 
     // All supported Thing types
     public static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections
-            .unmodifiableSet(Stream.of(FREEBOX_THING_TYPE_PHONE, FREEBOX_THING_TYPE_NET_DEVICE,
-                    FREEBOX_THING_TYPE_NET_INTERFACE).collect(Collectors.toSet()));
+            .unmodifiableSet(Stream.of(FREEBOX_BRIDGE_TYPE_SERVER, FREEBOX_THING_TYPE_PHONE).collect(Collectors.toSet()));
 
     // List of properties
     public static final String API_BASE_URL = "apiBaseUrl";

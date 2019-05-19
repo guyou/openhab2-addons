@@ -87,28 +87,6 @@
 		</config-description>
 	</thing-type>
 
-	<thing-type id="net_device">
-		<supported-bridge-type-refs>
-			<bridge-type-ref id="server" />
-		</supported-bridge-type-refs>
-
-		<label>Network Device</label>
-		<description>Provides network device reachability</description>
-
-		<channels>
-			<channel id="reachable" typeId="reachable" />
-		</channels>
-
-		<config-description>
-			<parameter name="macAddress" type="text">
-				<label>MAC Address</label>
-				<description>The MAC address of the network device</description>
-				<default></default>
-				<required>true</required>
-			</parameter>
-
-		</config-description>
-	</thing-type>
 
 	<thing-type id="net_interface">
 		<supported-bridge-type-refs>
@@ -487,26 +465,6 @@
 		<description>Is the phone ringing</description>
 		<category>Alarm</category>
 		<state readOnly="true" />
-	</channel-type>
-
-	<channel-type id="reachable">
-		<item-type>Switch</item-type>
-		<label>Reachable</label>
-		<description>Indicates whether the network device is reachable</description>
-		<category>Switch</category>
-		<state readOnly="true" />
-	</channel-type>
-
-	<channel-type id="playurl">
-		<item-type>String</item-type>
-		<label>Play audio or video URL</label>
-		<description>Play an audio or video media from the given URL</description>
-	</channel-type>
-
-	<channel-type id="stop">
-		<item-type>Switch</item-type>
-		<label>Stop playback</label>
-		<description>Stop the media playback</description>
 	</channel-type>
 
 </thing:thing-descriptions>
