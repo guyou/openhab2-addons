@@ -1,1 +1,4 @@
 Add HD support
+
+Add registering of network devices
+Cf. https://community.openhab.org/t/how-to-implement-inter-module-reuse/74249
